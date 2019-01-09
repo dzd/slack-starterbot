@@ -97,6 +97,8 @@ class Bot:
             thread_ts = event['ts']
             if 'thread_ts' in event.keys():
                 thread_ts = event['thread_ts']
+            if not analysed_message:
+                return Message(None, None, None)
             analysed_message_no_repeat = self.dont_repeat_in_thread(analysed_message, thread_ts)
             if not analysed_message_no_repeat:
                 return Message(None, None, None)
